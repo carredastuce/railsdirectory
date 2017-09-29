@@ -1,0 +1,25 @@
+<% if user_signed_in? %>
+    <% if current_user.voted_for?(site) %>
+        <%= link_to upvote_path(current_user.upvotes.where(site: site).first), remote: true, method: :delete, class: 'site-upvote site-upvoted' do %>
+            <div class="site-arrow"></div>
+            <div class='site-count'>
+              <%= site.upvotes.size %>
+            </div>
+        <% end %>
+    <% else %>
+        <%= link_to upvotes_path(site_id: site.id), remote: true, method: :post, class: 'site-upvote' do %>
+            <div class="site-arrow"></div>
+            <div class='site-count'>
+              <%= site.upvotes.size %>
+            </div>
+        <% end %>
+    <% end %>
+
+<% else %>
+    <div class='site-upvote'>
+      <div class="site-arrow"></div>
+      <div class='site-count'>
+        <%= site.upvotes.size %>
+      </div>
+    </div>
+<% end %>

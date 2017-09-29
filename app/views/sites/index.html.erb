@@ -6,10 +6,9 @@
       <% @sites.each do |site| %>
 
       <div class="site">
-        <div class="site-upvote">
-          <div class="site-arrow"></div>
-          <div class="site-count">0</div>
-        </div>
+          <div class="upvote-container" id="site-<%= site.id %>">
+            <%= render 'upvotes/show', site: site %>
+          </div>
         <% if site.image? %>
             <%= image_tag site.image_url, class: "site-image" %>
             <% else %>
