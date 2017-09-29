@@ -1,0 +1,9 @@
+<%= simple_form_for @site do |f| %>
+    <%= f.input :name, placeholder: "Site"%>
+    <%= f.input :url, placeholder: "https://www.example.com", label:"URL du site" %>
+    <%= f.input :url_submit, placeholder: "https://www.example.com/submit", label:"Url de la page de soumission" %>
+    <%= f.input :shortdesc, placeholder: "Tagline", label:"Tagline" %>
+    <%= f.input :description, placeholder: "Description", label:"Description du site (280car min.)" %>
+    <%= f.input :image, as: :file %>
+    <%= f.button :submit, "Ajouter", class: "btn btn-primary" %>
+<% end %>

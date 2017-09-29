@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <h1 class="text-center">Tous les sites</h1>
+
+      <% @sites.each do |site| %>
+
+      <div class="site">
+        <div class="site-upvote">
+          <div class="site-arrow"></div>
+          <div class="site-count">0</div>
+        </div>
+        <% if site.image? %>
+            <%= image_tag site.image_url, class: "site-image" %>
+            <% else %>
+        <img src="https://unsplash.it/300/200" alt="" class="site-image">
+        <% end %>
+        <div class="site-body">
+          <h3><%= link_to site.name, site_path(site) %></h3>
+
+          <p><%= site.shortdesc %></p>
+        </div>
+        <ul class="list-inline site-controls">
+          <li>
+            <%= link_to site_path(site) do %>
+              <i class="fa fa-eye"></i>
+                <%end%>
+          </li>
+          <li>
+            <%= link_to edit_site_path(site) do %>
+                <i class="fa fa-pencil"></i>
+                <%end%>
+          </li>
+          <li>
+            <%= link_to site_path(site), method: :delete do %>
+            <i class="fa fa-trash"></i>
+            <%end%>
+          </li>
+        </ul>
+
+      </div>
+
+      <%end%>
+
+    </div>
+  </div>
+</div>
