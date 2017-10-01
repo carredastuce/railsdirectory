@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+  get "/presentation" => "pages#presentation"
   resources :sites
   resources :upvotes, only: [ :create, :destroy ]
 
