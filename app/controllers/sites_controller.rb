@@ -4,6 +4,11 @@ class SitesController < ApplicationController
 
   def index
     @sites = Site.all
+    @sites = Site.order(:name)
+    @sites = Site.select("sites.*, COUNT(upvotes.id) AS upvotes_count").
+        joins("LEFT JOIN upvotes ON sites.id = upvotes.site_id").
+        group("sites.id").
+        order("upvotes_count DESC")
   end
   def show
   end
